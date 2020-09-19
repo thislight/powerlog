@@ -30,13 +30,13 @@ function powerlog:logrecord(record)
     record.time = self:timeprovider()
     table.insert(self, record)
     self.pointer = self.pointer + 1
+    for _, h in ipairs(self.loghooks) do
+        h(self, record)
+    end
     if record.level <= self.accept_level then
         for _, r in ipairs(self.recvicers) do
             r(self, record)
         end
-    end
-    for _, h in ipairs(self.loghooks) do
-        h(self, record)
     end
 end
 
