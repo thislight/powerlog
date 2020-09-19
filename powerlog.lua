@@ -22,6 +22,8 @@ function powerlog:create(name)
     else
         object.name = string.format("%s.%s", object.name, name)
     end
+    object.pointer = 0
+    return object
 end
 
 function powerlog:logrecord(record)
@@ -46,6 +48,7 @@ end
 
 function powerlog:log(level, message, object, err)
     self:logrecord {
+        name = self.name,
         level = level,
         message = message,
         object = object,
