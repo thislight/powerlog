@@ -16,7 +16,7 @@ function powerlog:create(name)
     for k, v in pairs(self) do
         object[k] = v
     end
-    object.recvicers = table.pack(table.unpack(self.receivers))
+    object.receivers = table.pack(table.unpack(self.receivers))
     if object.name == '' then
         object.name = name
     else
