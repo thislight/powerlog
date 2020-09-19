@@ -3,7 +3,7 @@ local format = string.format
 
 local powerlog = {
     name = '',
-    recvicers = {},
+    receivers = {},
     accept_level = 20,
     loghooks = {},
     timeprovider = function(self)
@@ -16,7 +16,7 @@ function powerlog:create(name)
     for k, v in pairs(self) do
         object[k] = v
     end
-    object.recvicers = table.pack(table.unpack(self.recvicers))
+    object.recvicers = table.pack(table.unpack(self.receivers))
     if object.name == '' then
         object.name = name
     else
@@ -34,7 +34,7 @@ function powerlog:logrecord(record)
         h(self, record)
     end
     if record.level <= self.accept_level then
-        for _, r in ipairs(self.recvicers) do
+        for _, r in ipairs(self.receivers) do
             r(self, record)
         end
     end
