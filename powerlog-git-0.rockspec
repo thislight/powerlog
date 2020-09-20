@@ -5,7 +5,9 @@ source = {
 }
 description = {
    homepage = "https://github.com/thislight/powerlog",
-   license = "GPLv3"
+   license = "GPLv3",
+   summary = "Another logging library for Lua 5.3+",
+   detailed = [[Powerlog provides a simple logger and some tools for logging.]]
 }
 dependencies = {
    "lua >=5.3, <=5.4"
